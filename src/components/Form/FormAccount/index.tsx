@@ -1,7 +1,11 @@
 import { Form, Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import styles from "./FormAccount.module.css";
 
 export const FormAccount = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
 
   const handleFormSubmit = (event: React.SyntheticEvent) => {
@@ -13,7 +17,14 @@ export const FormAccount = () => {
     <Form onSubmit={handleFormSubmit} className={styles.formContainer}>
       <fieldset>
         <p>
-          <input type="email" id="email" placeholder="Email" required />
+          <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </p>
         <p>
           <input
@@ -21,6 +32,8 @@ export const FormAccount = () => {
             id="password"
             placeholder="Senha"
             minLength={8}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </p>
