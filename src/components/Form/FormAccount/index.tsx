@@ -1,8 +1,29 @@
 import { Form, Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 import styles from "./FormAccount.module.css";
+import { auth } from "../../../services/firebaseConfig";
 
 export const FormAccount = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  function authLogin(e: { preventDefault: () => void }) {
+    e.preventDefault();
+    if (!email || !password) {
+      alert("Error: Preencha todos os campos");
+    } else {
+      navigate("/profile");
+    }
+  }
+
+  // function handleSignIn(e: { preventDefault: () => void }) {
+  //   e.preventDefault();
+  //   createUserWithEmailAndPassword(email, password);
+  // }
   const navigate = useNavigate();
 
   const handleFormSubmit = (event: React.SyntheticEvent) => {
@@ -14,7 +35,13 @@ export const FormAccount = () => {
     <Form onSubmit={handleFormSubmit} className={styles.formContainer}>
       <fieldset>
         <p>
-          <input type="email" id="email" placeholder="Email" required />
+          <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </p>
         <p>
           <input
@@ -22,6 +49,7 @@ export const FormAccount = () => {
             id="password"
             placeholder="Senha"
             minLength={8}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </p>
@@ -57,7 +85,11 @@ export const FormAccount = () => {
       </fieldset>
 
       <fieldset>
-        <button type="submit" className={styles.button_continue}>
+        <button
+          type="submit"
+          onClick={authLogin}
+          className={styles.button_continue}
+        >
           Criar conta
         </button>
 

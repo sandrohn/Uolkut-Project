@@ -1,20 +1,20 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 
-import { auth } from "../../../services/firebaseConfig.js";
-
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import styles from "./FormLogin.module.css";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../services/firebaseConfig";
 
 export const FormLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
 
-  const signIn = (e: { preventDefault: () => void }) => {
+  function handleSignIn(e: { preventDefault: () => void }) {
     e.preventDefault();
-    // signInWithEmailAndPassword{auth, email, password}
-  };
-
+    createUserWithEmailAndPassword(email, password);
+  }
   const navigate = useNavigate();
 
   const handleFormSubmit = (event: React.SyntheticEvent) => {
@@ -50,7 +50,7 @@ export const FormLogin = () => {
       </fieldset>
 
       <fieldset>
-        <button className={styles.button_login} type="submit">
+        <button onClick={handleSignIn} className={styles.button_login}>
           Entrar na conta
         </button>
 
