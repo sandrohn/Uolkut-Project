@@ -18,6 +18,14 @@
   margin-bottom: 1rem;
 }
 
+.detail_inputs {
+  display: flex;
+  flex-direction: row;
+}
+
+.detail_inputs p {
+  margin: 0.25rem;
+}
 
 .button_continue {
   background-color: var(--brand-color);
