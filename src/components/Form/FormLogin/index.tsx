@@ -1,5 +1,5 @@
 import { Form, Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import styles from "./FormLogin.module.css";
@@ -8,15 +8,24 @@ import { auth } from "../../../services/firebaseConfig";
 export const FormLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
-  function handleSignIn(e: { preventDefault: () => void }) {
+  function handleSignIn(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     createUserWithEmailAndPassword(email, password);
   }
   const navigate = useNavigate();
 
+  // function authLogin(e: FormEvent<HTMLFormElement>) {
+  //   e.preventDefault();
+  //   if (!email || !password) {
+  //     alert("Error: Preencha todos os campos");
+  //   } else {
+  //     navigate("/profile");
+  //   }
+  // }
   const handleFormSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
     navigate("profile");

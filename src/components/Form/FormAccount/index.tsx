@@ -1,22 +1,46 @@
 import { Form, Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { FormEvent, useState, useEffect } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 import styles from "./FormAccount.module.css";
-import { auth } from "../../../services/firebaseConfig";
+import { auth, firebaseConfig } from "../../../services/firebaseConfig";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 export const FormAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [name, setName] = useState("");
+  const [date, setDate] = useState("");
+  const [job, setJob] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
 
-  function authLogin(e: { preventDefault: () => void }) {
-    e.preventDefault();
-    if (!email || !password) {
-      alert("Error: Preencha todos os campos");
-    } else {
-      navigate("/profile");
+  const [createUserWithEmailAndPassword, user, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [loading, setLoading] = useState(false);
+
+  const db = getFirestore(firebaseConfig);
+  const userCollectionRef = collection(db, "user");
+
+  async function handleCreateAccount() {
+    setLoading(true);
+    try {
+      await createUserWithEmailAndPassword(email, password);
+
+      await addDoc(userCollectionRef, {
+        email,
+        password,
+        name,
+        date,
+        job,
+        country,
+        city,
+      });
+
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
     }
   }
 
@@ -24,21 +48,24 @@ export const FormAccount = () => {
   //   e.preventDefault();
   //   createUserWithEmailAndPassword(email, password);
   // }
-  const navigate = useNavigate();
 
-  const handleFormSubmit = (event: React.SyntheticEvent) => {
-    event.preventDefault();
-    navigate("/");
-  };
+  // CODIGO ANTERIOR
+  // const navigate = useNavigate();
+
+  // const handleFormSubmit = (event: React.SyntheticEvent) => {
+  //   event.preventDefault();
+  //   navigate("/");
+  // };
 
   return (
-    <Form onSubmit={handleFormSubmit} className={styles.formContainer}>
+    <Form className={styles.formContainer}>
       <fieldset>
         <p>
           <input
             type="email"
             id="email"
             placeholder="Email"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
@@ -49,27 +76,63 @@ export const FormAccount = () => {
             id="password"
             placeholder="Senha"
             minLength={8}
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </p>
         <p>
-          <input type="name" id="name" placeholder="Nome" required />
+          <input
+            type="name"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Nome"
+            required
+          />
         </p>
         <div className={styles.detail_inputs}>
           <p>
-            <input type="text" id="date" placeholder="DD/MM/AAAA" required />
+            <input
+              type="text"
+              id="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              placeholder="DD/MM/AAAA"
+              required
+            />
           </p>
           <p>
-            <input type="text" id="job" placeholder="Profissão" required />
+            <input
+              type="text"
+              id="job"
+              value={job}
+              onChange={(e) => setJob(e.target.value)}
+              placeholder="Profissão"
+              required
+            />
           </p>
         </div>
         <div className={styles.detail_inputs}>
           <p>
-            <input type="text" id="ccity" placeholder="País" required />
+            <input
+              type="text"
+              id="city"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              placeholder="País"
+              required
+            />
           </p>
           <p>
-            <input type="text" id="country" placeholder="Cidade" required />
+            <input
+              type="text"
+              id="country"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              placeholder="Cidade"
+              required
+            />
           </p>
         </div>
         <p>
@@ -89,7 +152,7 @@ export const FormAccount = () => {
       <fieldset>
         <button
           type="submit"
-          onClick={authLogin}
+          onClick={handleCreateAccount}
           className={styles.button_continue}
         >
           Criar conta

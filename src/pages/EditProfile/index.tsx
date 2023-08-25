@@ -1,7 +1,6 @@
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
-import { HeaderProfile } from "../../components/Header/HeaderProfile";
-import { HeaderRoot } from "../../components/Header/HeaderRoot";
+
 import { UserProfile } from "../../components/UserProfile";
 import styles from "./EditProfile.module.css";
 
