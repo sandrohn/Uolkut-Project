@@ -15,6 +15,22 @@ export const FormAccount = () => {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
 
+  function calculateAge(birthdayDate: string) {
+    const today = new Date();
+    const birthDate = new Date(birthdayDate);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+
+    return age;
+  }
+
   const [createUserWithEmailAndPassword, user, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [loading, setLoading] = useState(false);
@@ -27,6 +43,8 @@ export const FormAccount = () => {
     try {
       await createUserWithEmailAndPassword(email, password);
 
+      const age = calculateAge(date);
+
       await addDoc(userCollectionRef, {
         email,
         password,
@@ -35,27 +53,16 @@ export const FormAccount = () => {
         job,
         country,
         city,
+        age,
       });
 
       setLoading(false);
+      console.log(user);
     } catch (error) {
       console.log(error);
       setLoading(false);
     }
   }
-
-  // function handleSignIn(e: { preventDefault: () => void }) {
-  //   e.preventDefault();
-  //   createUserWithEmailAndPassword(email, password);
-  // }
-
-  // CODIGO ANTERIOR
-  // const navigate = useNavigate();
-
-  // const handleFormSubmit = (event: React.SyntheticEvent) => {
-  //   event.preventDefault();
-  //   navigate("/");
-  // };
 
   return (
     <Form className={styles.formContainer}>
@@ -94,7 +101,7 @@ export const FormAccount = () => {
         <div className={styles.detail_inputs}>
           <p>
             <input
-              type="text"
+              type="date"
               id="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}

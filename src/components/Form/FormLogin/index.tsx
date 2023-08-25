@@ -1,38 +1,33 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import React, { FormEvent, useState } from "react";
 
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 import styles from "./FormLogin.module.css";
-import { auth } from "../../../services/firebaseConfig";
 
 export const FormLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
-
-  function handleSignIn(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    createUserWithEmailAndPassword(email, password);
-  }
-  const navigate = useNavigate();
-
-  // function authLogin(e: FormEvent<HTMLFormElement>) {
-  //   e.preventDefault();
-  //   if (!email || !password) {
-  //     alert("Error: Preencha todos os campos");
-  //   } else {
-  //     navigate("/profile");
-  //   }
-  // }
-  const handleFormSubmit = (event: React.SyntheticEvent) => {
+  const handleLoginForm = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    navigate("profile");
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+    navigate("/profile");
   };
 
+  const navigate = useNavigate();
+
   return (
-    <Form onSubmit={handleFormSubmit} className={styles.formLoginContainer}>
+    <Form onSubmit={handleLoginForm} className={styles.formLoginContainer}>
       <fieldset>
         <p>
           <input
@@ -59,9 +54,7 @@ export const FormLogin = () => {
       </fieldset>
 
       <fieldset>
-        <button onClick={handleSignIn} className={styles.button_login}>
-          Entrar na conta
-        </button>
+        <button className={styles.button_login}>Entrar na conta</button>
 
         <Link to="/register">
           <button className={styles.button_register}>Criar uma conta</button>
