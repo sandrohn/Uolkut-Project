@@ -9,6 +9,30 @@
   gap: 2rem;
 }
 
+.container_all_elements h2 {
+  color: var(--brand-color);
+}
+
+.container_all_elements input{
+  background-color: #EFF3F8;
+  padding: 16px;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  color: var(--dark-10);
+  margin-bottom: 1rem;
+}
+
+.container_all_elements select {
+  background-color: #EFF3F8;
+  padding: 16px;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  color: var(--dark-10);
+  margin-bottom: 1rem;
+}
+
 .container_user_profile_mobile{
   display: none;
 }
@@ -22,7 +46,7 @@
 }
 
 .container_user_edit {
-  display: flex;
+ 
   flex-direction: row;
   margin-left: 2rem;
   padding: 1rem;
@@ -46,15 +70,7 @@
   color: var(--dark-30);
 }
 
-.button_edit_profile {
-  margin-top: 1rem;
-  border: 1px solid var(--brand-color);
-}
 
-.button_edit_profile:hover {
-  transition: 1s;
-  border: 1px solid var(--dark-30);
-}
 
 .user_details {
   display: flex;

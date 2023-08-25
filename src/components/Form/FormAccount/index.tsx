@@ -79,7 +79,9 @@ export const FormAccount = () => {
             </option>
             <option>Solteiro</option>
             <option>Casado</option>
-            <option>Viúvo</option>
+            <option>Divorciado</option>
+            <option>Namorando</option>
+            <option>Preocupado</option>
           </select>
         </p>
       </fieldset>
