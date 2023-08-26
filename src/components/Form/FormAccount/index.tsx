@@ -14,6 +14,15 @@ export const FormAccount = () => {
   const [job, setJob] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
+  const [relationship, setRelationship] = useState("");
+
+  const lovers = [
+    "Solteiro",
+    "Casado",
+    "Divorciado",
+    "Namorando",
+    "Preocupado",
+  ];
 
   function calculateAge(birthdayDate: string) {
     const today = new Date();
@@ -54,10 +63,19 @@ export const FormAccount = () => {
         country,
         city,
         age,
+        relationship,
       });
 
       setLoading(false);
       console.log(user);
+      setEmail("");
+      setPassword("");
+      setCity("");
+      setName("");
+      setCountry("");
+      setJob("");
+      setDate("");
+      setRelationship("");
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -143,15 +161,18 @@ export const FormAccount = () => {
           </p>
         </div>
         <p>
-          <select required>
-            <option disabled selected value="">
+          <select
+            value={relationship}
+            onChange={(e) => setRelationship(e.target.value)}
+          >
+            <option value="" disabled>
               Relacionamento
             </option>
-            <option>Solteiro</option>
-            <option>Casado</option>
-            <option>Divorciado</option>
-            <option>Namorando</option>
-            <option>Preocupado</option>
+            {lovers.map((status) => (
+              <option key={status} value={status}>
+                {status}
+              </option>
+            ))}
           </select>
         </p>
       </fieldset>

@@ -15,13 +15,13 @@ export const FormLogin = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        navigate("/profile");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
-    navigate("/profile");
   };
 
   const navigate = useNavigate();
