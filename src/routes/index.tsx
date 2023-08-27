@@ -6,6 +6,7 @@ import { Register } from "../pages/Register";
 import { RegisterDetails } from "../pages/RegisterDetails";
 import { Login } from "../pages/Login";
 import { EditProfile } from "../pages/EditProfile";
+import { Recover } from "../pages/Recover";
 
 const routes = createBrowserRouter([
   {
@@ -23,8 +24,8 @@ const routes = createBrowserRouter([
             element: <Register />,
           },
           {
-            path: "register/details",
-            element: <RegisterDetails />,
+            path: "recover",
+            element: <Recover />,
           },
         ],
       },
