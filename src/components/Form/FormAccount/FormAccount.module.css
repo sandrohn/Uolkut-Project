@@ -1,5 +1,6 @@
 .formContainer {
-  overflow-y: scroll;
+  position: relative;
+  top: -2rem;
 }
 
 .formContainer p {
@@ -18,18 +19,29 @@
   margin-bottom: 1rem;
 }
 
-.detail_inputs {
+.both_div{
   display: flex;
-  flex-direction: row;
+ 
 }
 
-.detail_inputs p {
-  margin: 0.25rem;
+.both_div input{
+  margin-bottom: 0.5rem;
 }
 
+.left_div{
+  width: 50%;
+  margin-right: 0.5rem;
+}
+
+.right_div{
+  width: 50%;
+
+}
 .button_continue {
   background-color: var(--brand-color);
   color: white; 
+  position: relative;
+  top: -1rem;
 }
 
 .button_continue:hover{
@@ -37,11 +49,6 @@
 
 }
 
-.button_back {
-  color: var(--brand-color);
-  background-color: #EFF3F8;
-
-}
 
 .button_back:hover{
   opacity: 0.7;

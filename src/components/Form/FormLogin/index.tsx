@@ -1,5 +1,5 @@
 import { Form, Link, useNavigate } from "react-router-dom";
-import React, { FormEvent, useState } from "react";
+import React, { useState } from "react";
 
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 import styles from "./FormLogin.module.css";

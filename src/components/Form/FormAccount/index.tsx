@@ -84,7 +84,7 @@ export const FormAccount = () => {
 
   return (
     <Form className={styles.formContainer}>
-      <fieldset>
+      <fieldset className={styles.all_content}>
         <p>
           <input
             type="email"
@@ -116,65 +116,68 @@ export const FormAccount = () => {
             required
           />
         </p>
-        <div className={styles.detail_inputs}>
-          <p>
-            <input
-              type="date"
-              id="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              placeholder="DD/MM/AAAA"
-              required
-            />
-          </p>
-          <p>
-            <input
-              type="text"
-              id="job"
-              value={job}
-              onChange={(e) => setJob(e.target.value)}
-              placeholder="Profissão"
-              required
-            />
-          </p>
+        <div className={styles.both_div}>
+          <div className={styles.left_div}>
+            <p>
+              <input
+                type="date"
+                id="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                placeholder="DD/MM/AAAA"
+                required
+              />
+            </p>
+            <p>
+              <input
+                type="text"
+                id="country"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                placeholder="País"
+                required
+              />
+            </p>
+          </div>
+          <div className={styles.right_div}>
+            <p>
+              <input
+                type="text"
+                id="job"
+                value={job}
+                onChange={(e) => setJob(e.target.value)}
+                placeholder="Profissão"
+                required
+              />
+            </p>
+            <p>
+              <input
+                type="text"
+                id="city"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="Cidade"
+                required
+              />
+            </p>
+
+            <p>
+              <select
+                value={relationship}
+                onChange={(e) => setRelationship(e.target.value)}
+              >
+                <option value="" disabled>
+                  Relacionamento
+                </option>
+                {lovers.map((status) => (
+                  <option key={status} value={status}>
+                    {status}
+                  </option>
+                ))}
+              </select>
+            </p>
+          </div>
         </div>
-        <div className={styles.detail_inputs}>
-          <p>
-            <input
-              type="text"
-              id="city"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              placeholder="País"
-              required
-            />
-          </p>
-          <p>
-            <input
-              type="text"
-              id="country"
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-              placeholder="Cidade"
-              required
-            />
-          </p>
-        </div>
-        <p>
-          <select
-            value={relationship}
-            onChange={(e) => setRelationship(e.target.value)}
-          >
-            <option value="" disabled>
-              Relacionamento
-            </option>
-            {lovers.map((status) => (
-              <option key={status} value={status}>
-                {status}
-              </option>
-            ))}
-          </select>
-        </p>
       </fieldset>
 
       <fieldset>
@@ -185,10 +188,6 @@ export const FormAccount = () => {
         >
           Criar conta
         </button>
-
-        <Link to="/">
-          <button className={styles.button_back}>Voltar para login</button>
-        </Link>
       </fieldset>
     </Form>
   );
