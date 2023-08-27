@@ -5,14 +5,15 @@ import { ReactNode } from "react";
 
 interface FormRootProps {
   children: ReactNode;
+  headerText: string;
 }
 
-export const FormRoot = ({ children }: FormRootProps) => {
+export const FormRoot = ({ children, headerText }: FormRootProps) => {
   return (
     <section className={styles.formRootContainer}>
       <header>
         <img src={logoForm} alt="" />
-        <h2>Cadastre-se no UOLkut</h2>
+        <h2>{headerText}</h2>
       </header>
 
       {children}

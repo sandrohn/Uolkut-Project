@@ -1,4 +1,4 @@
-import { Form, Link, useNavigate } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import React, { FormEvent, useState, useEffect } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 

@@ -4,7 +4,7 @@ import { FormRecover } from "../../components/Form/FormRecover";
 export const Recover = () => {
   return (
     <>
-      <Form.Root>
+      <Form.Root headerText="Recupere a senha">
         <FormRecover />
       </Form.Root>
     </>

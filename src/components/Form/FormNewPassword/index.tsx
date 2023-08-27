@@ -11,7 +11,7 @@ export const FormNewPassword = () => {
   };
   return (
     <Form onSubmit={handleFormSubmit}>
-      <fieldset>
+      <fieldset className={styles.upper_container}>
         <input type="text" placeholder="Informe o código" />
         <input type="password" placeholder="Nova senha" />
         <input type="password" placeholder="Confirme a senha" />

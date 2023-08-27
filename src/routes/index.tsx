@@ -3,7 +3,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthLayout } from "../layouts/AuthLayout";
 import { Profile } from "../pages/Profile";
 import { Register } from "../pages/Register";
-import { RegisterDetails } from "../pages/RegisterDetails";
 import { Login } from "../pages/Login";
 import { EditProfile } from "../pages/EditProfile";
 import { Recover } from "../pages/Recover";

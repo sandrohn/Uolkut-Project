@@ -3,7 +3,7 @@ import { FormNewPassword } from "../../components/Form/FormNewPassword";
 
 export const NewPassword = () => {
   return (
-    <Form.Root>
+    <Form.Root headerText="Nova senha">
       <FormNewPassword />
     </Form.Root>
   );
