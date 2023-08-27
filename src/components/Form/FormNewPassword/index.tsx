@@ -1,22 +1,22 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 
-import styles from "./FormRecover.module.css";
+import styles from "./FormNewPassword.module.css";
 
-export const FormRecover = () => {
+export const FormNewPassword = () => {
   const navigate = useNavigate();
 
   const handleFormSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    navigate("newpassword");
+    navigate("/");
   };
   return (
     <Form onSubmit={handleFormSubmit}>
       <fieldset>
-        <input type="email" placeholder="Email Cadastrado" />
-      </fieldset>
-      <fieldset>
-        <button type="submit" className={styles.button_send}>
-          Enviar código
+        <input type="text" placeholder="Informe o código" />
+        <input type="password" placeholder="Nova senha" />
+        <input type="password" placeholder="Confirme a senha" />
+        <button type="submit" className={styles.save_pass}>
+          Salvar
         </button>
       </fieldset>
       <fieldset className={styles.bottom_container}>

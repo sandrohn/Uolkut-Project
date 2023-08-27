@@ -7,6 +7,7 @@ import { RegisterDetails } from "../pages/RegisterDetails";
 import { Login } from "../pages/Login";
 import { EditProfile } from "../pages/EditProfile";
 import { Recover } from "../pages/Recover";
+import { NewPassword } from "../pages/NewPassword";
 
 const routes = createBrowserRouter([
   {
@@ -23,9 +24,23 @@ const routes = createBrowserRouter([
             path: "register",
             element: <Register />,
           },
+        ],
+      },
+      {
+        path: "recover",
+        children: [
           {
-            path: "recover",
-            element: <Recover />,
+            element: <AuthLayout />,
+            children: [
+              {
+                index: true,
+                element: <Recover />,
+              },
+              {
+                path: "newpassword",
+                element: <NewPassword />,
+              },
+            ],
           },
         ],
       },
