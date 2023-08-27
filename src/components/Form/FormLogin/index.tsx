@@ -7,6 +7,7 @@ import styles from "./FormLogin.module.css";
 export const FormLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMesage] = useState("");
 
   const handleLoginForm = (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -21,6 +22,7 @@ export const FormLogin = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        setErrorMesage("Usuário não cadastrado ou senha inválida");
       });
   };
 
@@ -47,6 +49,8 @@ export const FormLogin = () => {
             required
           />
         </p>
+        {errorMessage && <p className={styles.errorText}>{errorMessage}</p>}
+
         <p className={styles.checkboxContainer}>
           <input type="checkbox" name="remember-password" />
           <label htmlFor="remember-password">Lembrar minha senha</label>
