@@ -6,6 +6,9 @@
     letter-spacing: -1px;
 }
 
+.errorText{
+    color: var(--brand-color);
+}
 .checkboxContainer {
     display: flex;
     justify-content: flex-start;

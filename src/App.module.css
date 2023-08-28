@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&display=swap%27');
 :root {
   /* --- COLORS ---  */
-  --brand-color: #ED2590;
+  --brand-color: #ED6D25;
   --background: #D9E6F7;
 
   --dark-10: #4B4B4B;
@@ -32,13 +33,14 @@
   box-sizing: border-box;
 }
 
-@font-face {
+/* @font-face {
   font-family: sf-pro-display, sans-serif;
   src: url("assets/SFProDisplay-Regular.ttf");
-}
+} */
+
 
 body, html {
-  font-family: sf-pro-display, sans-serif;
+  font-family: 'Roboto Flex', sans-serif;
   background-color: var(--background);
 }
 

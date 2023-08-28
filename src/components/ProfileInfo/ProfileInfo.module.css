@@ -4,6 +4,7 @@
   padding: 1.5rem;
   border-radius: 16px;
 
+
   max-width: 37rem;
 }
 
@@ -77,6 +78,12 @@ dt {
   color: var(--brand-color);
   cursor: pointer;
   font-size: var(--sm);
+}
+
+.down_div{
+  display: flex;
+  flex-direction: column;
+  margin-top: 15rem;
 }
 
 .multiple_options_field_details {

@@ -1,0 +1,18 @@
+.button_send {
+    background-color: var(--brand-color);
+    color: #EFF3F8;
+}
+
+
+.bottom_container{
+    padding-top: 3rem;
+}
+.bottom_container h5{
+    color: var(--brand-color);
+    text-align: center;
+}
+
+.bottom_container button {
+    color: var(--brand-color);
+    background-color: #EFF3F8;
+}

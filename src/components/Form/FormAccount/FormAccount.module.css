@@ -1,5 +1,6 @@
 .formContainer {
-  overflow-y: scroll;
+  position: relative;
+  top: -2rem;
 }
 
 .formContainer p {
@@ -8,9 +9,39 @@
   gap: 0.25rem;
 }
 
+.formContainer select {
+  background-color: #EFF3F8;
+  padding: 16px;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  color: var(--dark-10);
+  margin-bottom: 1rem;
+}
+
+.both_div{
+  display: flex;
+ 
+}
+
+.both_div input{
+  margin-bottom: 0.5rem;
+}
+
+.left_div{
+  width: 50%;
+  margin-right: 0.5rem;
+}
+
+.right_div{
+  width: 50%;
+
+}
 .button_continue {
   background-color: var(--brand-color);
   color: white; 
+  position: relative;
+  top: -1rem;
 }
 
 .button_continue:hover{
@@ -18,12 +49,9 @@
 
 }
 
-.button_back {
-  color: var(--brand-color);
-  background-color: #EFF3F8;
-
-}
 
 .button_back:hover{
   opacity: 0.7;
 }
+
+
