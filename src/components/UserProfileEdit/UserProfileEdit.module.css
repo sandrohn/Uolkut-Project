@@ -1,0 +1,46 @@
+.container_profile_user{
+    display: flex;
+    width: 17.5rem;
+    height: 25rem;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+
+.container_desc_img_user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 20.875rem;
+    width: 100%;
+    
+    background-color: var(--dark-40);
+    border-radius: 0.938rem;
+}
+
+.EditLogo{
+    position: relative;
+    padding: 0.5rem;
+    border: 0.3rem solid var(--brand-color);
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 5rem;
+    bottom: 3rem;
+    right: 3.5rem;
+    
+}
+.circle_image_user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.563rem;
+    height: 11.563rem;
+    width: 11.563rem;
+    border-radius: 50%;
+    border: 3px solid var(--brand-color);
+    position: center center;
+    background-size: cover;
+}
+.image_user{
+    position: center center;
+}

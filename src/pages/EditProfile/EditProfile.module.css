@@ -49,9 +49,18 @@
   
 }
 .button_save{
-  width: 20rem;
-  margin-left: 1rem;
-  
+}
+
+.button_save button {
+  width: 100%;
+  height: 3.5rem;
+  border: 1px solid var(--brand-color);
+  background-color: var(--brand-color);
+  color: var(--dark-30);
+  border-radius: 12px;
+  font-size: var(--lg);
+  margin-bottom: var(--lg);
+  cursor: pointer; 
 }
 .container_user_profile_mobile{
   display: none;
