@@ -1,4 +1,4 @@
-import { Form, Link } from "react-router-dom";
+import { Form } from "react-router-dom";
 import React, { FormEvent, useState, useEffect } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 
@@ -40,7 +40,7 @@ export const FormAccount = () => {
     return age;
   }
 
-  const [createUserWithEmailAndPassword, user, error] =
+  const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);
   const [loading, setLoading] = useState(false);
 
@@ -50,13 +50,12 @@ export const FormAccount = () => {
   async function handleCreateAccount() {
     setLoading(true);
     try {
-      await createUserWithEmailAndPassword(email, password);
-
+      const create = await createUserWithEmailAndPassword(email, password);
+      const user = create?.user;
       const age = calculateAge(date);
 
       await addDoc(userCollectionRef, {
-        email,
-        password,
+        uid: user?.uid,
         name,
         date,
         job,
