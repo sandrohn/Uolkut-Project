@@ -14,6 +14,10 @@
   align-items: center;
 }
 
+.logo_buttom{
+  appearance: ;
+}
+
 @media (max-width: 900px) {
   .header nav {
     display: none;

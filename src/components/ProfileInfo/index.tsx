@@ -118,18 +118,20 @@ export function ProfileInfo() {
           <dt>Cidade natal:</dt>
           <dd>{userData?.city}</dd>
         </div>
-        <div className={styles.multiple_options_field_details}>
-          <dt>Músicas:</dt>
-          <dd>Trap</dd>
-          <dd className={styles.isMobile}>Rap</dd>
-          <dd className={styles.isMobile}>Indie</dd>
-          <span>Ver todos</span>
-        </div>
-        <div className={styles.multiple_options_field_details}>
-          <dt>Filmes:</dt>
-          <dd>A rede social</dd>
-          <dd className={styles.isMobile}>Meu amigo totoro</dd>
-          <span>Ver todos</span>
+        <div className={styles.down_div}>
+          <div className={styles.multiple_options_field_details}>
+            <dt>Músicas:</dt>
+            <dd>Trap</dd>
+            <dd className={styles.isMobile}>Rap</dd>
+            <dd className={styles.isMobile}>Indie</dd>
+            <span>Ver todos</span>
+          </div>
+          <div className={styles.multiple_options_field_details}>
+            <dt>Filmes:</dt>
+            <dd>A rede social</dd>
+            <dd className={styles.isMobile}>Meu amigo totoro</dd>
+            <span>Ver todos</span>
+          </div>
         </div>
       </dl>
     </section>
